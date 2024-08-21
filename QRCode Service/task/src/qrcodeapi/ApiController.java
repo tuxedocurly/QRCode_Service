@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.awt.image.BufferedImage;
@@ -39,8 +40,9 @@ public class ApiController {
      * @return a {@link ResponseEntity} with {@link HttpStatus#OK} to indicate that the API is healthy.
      */
     @GetMapping("/api/health")
-    public ResponseEntity<HttpStatus> getHealth() {
-        return new ResponseEntity<>(HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    public String getHealth() {
+        return "API Health: The endpoint is up!";
     }
 
     /**
